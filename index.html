@@ -433,7 +433,7 @@ html, body {
 <div id="login">
   <h1>WINDOWS 13 🎃</h1>
   <input id="channelInput" placeholder="Enter channel name..." />
-  <button id="enterBtn" onclick="login()">ENTER RUDVENTUR</button>
+  <button data-explain="Enters the LuxWin13 desktop on the channel typed above; people on the same channel share it." id="enterBtn" onclick="login()">ENTER RUDVENTUR</button>
   <div style="color: var(--dash); font-size: 0.9rem; margin-top: 10px;">
     Powered by PumpkinG 🎃 (Claude + Grok)
   </div>
@@ -443,43 +443,43 @@ html, body {
 <div id="desktop">
   
   <!-- TOP-LEFT: NOTCH MENU -->
-  <div id="notch" onclick="toggleNotch()">RUDVENTUR</div>
+  <div data-explain="Opens or closes the RUDVENTUR menu: maps, tools, ChemVentur and support." id="notch" onclick="toggleNotch()">RUDVENTUR</div>
   <div id="notchMenu">
-    <div class="menu-item" onclick="toggleSub(this)">🗺️ MAPS</div>
+    <div class="menu-item" data-explain="Opens or closes the Maps group: live weather and lightning maps." onclick="toggleSub(this)">🗺️ MAPS</div>
     <div class="sub-menu">
-      <div class="sub-item">Ventusky</div>
-      <div class="sub-item">Windy</div>
-      <div class="sub-item">Blitzortung</div>
+      <div class="sub-item" data-explain="Opens Ventusky, a live weather map of wind, rain and temperature, in a new tab." onclick="window.open('https://www.ventusky.com/', '_blank')">Ventusky</div>
+      <div class="sub-item" data-explain="Opens Windy, a live wind and weather forecast map, in a new tab." onclick="window.open('https://www.windy.com/', '_blank')">Windy</div>
+      <div class="sub-item" data-explain="Opens Blitzortung, a live map of lightning strikes, in a new tab." onclick="window.open('https://map.blitzortung.org/', '_blank')">Blitzortung</div>
     </div>
 
-    <div class="menu-item" onclick="toggleSub(this)">🛠️ TOOLS</div>
+    <div class="menu-item" data-explain="Opens or closes the Tools group: Map Merger, the translator and AI chats." onclick="toggleSub(this)">🛠️ TOOLS</div>
     <div class="sub-menu">
-      <div class="sub-item">Map Merger</div>
-      <div class="sub-item">Translator</div>
-      <div class="sub-item">AI Chats</div>
+      <div class="sub-item" data-explain="Opens Map Merger Venti (walk, drive, sail or fly on a real map) in a new tab." onclick="window.open('https://rudventur.github.io/map-merger-venti/', '_blank')">Map Merger</div>
+      <div class="sub-item" data-explain="Opens the RUDVENTUR translator: translate, chat with translation and on-screen keyboards." onclick="window.open('https://rudventur.github.io/map-merger-venti/translator_v7.html', '_blank')">Translator</div>
+      <div class="sub-item" data-explain="Opens Global Chat with its prompt builder for Claude, Grok, ChatGPT and others, inside the translator." onclick="window.open('https://rudventur.github.io/map-merger-venti/translator_v7.html?tab=chat', '_blank')">AI Chats</div>
     </div>
 
-    <div class="menu-item chemventur" onclick="toggleSub(this)">☢️ CHEMVENTUR</div>
+    <div class="menu-item chemventur" data-explain="Opens or closes the ChemVentur group: full screen, window, new tab or GitHub." onclick="toggleSub(this)">☢️ CHEMVENTUR</div>
     <div class="sub-menu">
-      <div class="sub-item" onclick="openChemVentur('fullscreen')">🖥️ Full Screen</div>
-      <div class="sub-item" onclick="openChemVentur('window')">🪟 Window</div>
-      <div class="sub-item" onclick="openChemVentur('tab')">🔗 New Tab</div>
-      <div class="sub-item" onclick="window.open('https://github.com/rudventur/ChemVentur','_blank')">📂 GitHub</div>
+      <div class="sub-item" data-explain="Opens ChemVentur filling the whole screen." onclick="openChemVentur('fullscreen')">🖥️ Full Screen</div>
+      <div class="sub-item" data-explain="Opens ChemVentur in a window on this desktop." onclick="openChemVentur('window')">🪟 Window</div>
+      <div class="sub-item" data-explain="Opens ChemVentur in a new browser tab." onclick="openChemVentur('tab')">🔗 New Tab</div>
+      <div class="sub-item" data-explain="Opens the ChemVentur source code on GitHub in a new tab." onclick="window.open('https://github.com/rudventur/ChemVentur','_blank')">📂 GitHub</div>
     </div>
 
-    <div class="menu-item electric" onclick="buyElectricity()">⚡ Buy Pumpkin Electricity! 🎃</div>
+    <div class="menu-item electric" data-explain="Supports RUDVENTUR: opens the Ko-fi page to buy the creator a coffee (pays for hosting and electricity)." onclick="buyElectricity()">⚡ Buy Pumpkin Electricity! 🎃</div>
   </div>
 
   <!-- TOP-RIGHT: the shared RUDVENTUR useRbox (R circle) is added by embed/useRbox.js -->
 
   <!-- BOTTOM-LEFT: BUTTONS -->
   <div id="bottomButtons">
-    <div class="bottom-btn" onclick="openWindow('keyboard')" title="Keyboards (in the translator)">⌨️</div>
-    <div class="bottom-btn" onclick="openWindow('chat')" title="Global Chat with translation (in the translator)">💬</div>
+    <div class="bottom-btn" data-explain="Opens the translator with the on-screen keyboards for many languages; it types into the focused text box." onclick="openWindow('keyboard')" title="Keyboards (in the translator)">⌨️</div>
+    <div class="bottom-btn" data-explain="Opens the Chat tab of the translator: the public chat room, with every message translated into your language." onclick="openWindow('chat')" title="Global Chat with translation (in the translator)">💬</div>
   </div>
 
   <!-- BOTTOM-RIGHT: POPCORN -->
-  <div id="popcornBtn" onclick="openWindow('popcorn')" title="Popcorn Hub">🍿</div>
+  <div data-explain="Opens the Popcorn Hub window: popCoin wallet, PIX camera challenges, the bunker and tools." id="popcornBtn" onclick="openWindow('popcorn')" title="Popcorn Hub">🍿</div>
 
   <!-- TASKBAR -->
   <div id="taskbar">
@@ -590,9 +590,9 @@ const WindowManager = {
           ${options.icon || '🪟'} ${options.title || 'Window'}
         </div>
         <div class="window-controls">
-          <div class="window-btn minimize" onclick="WindowManager.minimize('${id}')">_</div>
-          <div class="window-btn maximize" onclick="WindowManager.toggleMaximize('${id}')">□</div>
-          <div class="window-btn close" onclick="WindowManager.close('${id}')">✕</div>
+          <div data-explain="Minimises this window to the taskbar." class="window-btn minimize" onclick="WindowManager.minimize('${id}')">_</div>
+          <div data-explain="Makes this window fill the desktop, or back to its size." class="window-btn maximize" onclick="WindowManager.toggleMaximize('${id}')">□</div>
+          <div data-explain="Closes this window." class="window-btn close" onclick="WindowManager.close('${id}')">✕</div>
         </div>
       </div>
       <div class="window-content ${options.noPadding ? 'no-padding' : ''}">
@@ -702,6 +702,7 @@ const WindowManager = {
     Object.entries(this.windows).forEach(([id, win]) => {
       const item = document.createElement('div');
       item.className = 'taskbar-item';
+      item.setAttribute('data-explain', 'Brings this window to the front, or back from the taskbar if it was minimised.');
       if (!win.minimized) item.classList.add('active');
       item.innerHTML = `${win.icon || '🪟'} ${win.title || 'Window'}`;
       item.onclick = () => {
